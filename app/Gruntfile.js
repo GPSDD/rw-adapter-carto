@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function (grunt) {
 
     grunt.file.setBase('..');
@@ -15,6 +13,19 @@ module.exports = function (grunt) {
                     node_env: 'dev',
                     port: process.env.PORT,
                     output: 'started'
+                }
+            }
+        },
+
+        mocha_istanbul: {
+            coverage: {
+                src: 'app/test', // the folder, not the files
+                options: {
+                    coverageFolder: 'coverage',
+                    mask: '**/*.spec.js',
+                    root: 'app/src',
+                    nodeExec: require.resolve('.bin/babel-node'),
+                    mochaOptions: ['--compilers', 'js:babel-register']
                 }
             }
         },
@@ -76,6 +87,8 @@ module.exports = function (grunt) {
     grunt.registerTask('unitTest', ['mochaTest:unit']);
 
     grunt.registerTask('e2eTest', ['mochaTest:e2e']);
+
+    grunt.registerTask('e2eTestCoverage', ['mocha_istanbul:coverage']);
 
     grunt.registerTask('e2eTest-watch', ['watch:e2eTest']);
 
