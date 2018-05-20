@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "CT_URL=http://mymachine:9000 LOCAL_URL=http://mymachine:3005 NODE_PATH=app/src PORT=3005 node ./node_modules/.bin/grunt --gruntfile app/Gruntfile.js",
-    "start": "NODE_PATH=app/src node app/index.js",
-    "test": "NODE_PATH=app/src node ./node_modules/.bin/grunt --gruntfile app/Gruntfile.js e2eTest",
+    "start": "NODE_PATH=app/src node $NODE_DEBUG_OPTION app/index.js",
+    "test": "NODE_PATH=app/src node $NODE_DEBUG_OPTION ./node_modules/.bin/grunt --gruntfile app/Gruntfile.js e2eTest",
     "test-watch": "NODE_PATH=app/src CT_URL=http://tower.test node ./node_modules/.bin/grunt --gruntfile app/Gruntfile.js e2eTest-watch"
   },
   "keywords": [],
@@ -15,6 +15,8 @@
   "devDependencies": {
     "assert": "^1.4.1",
     "babel-eslint": "^6.1.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "eslint": "^2.12.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.1",
