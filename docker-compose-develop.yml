@@ -13,3 +13,6 @@ develop:
   command: develop
   volumes:
     - ./app:/opt/rw-adapter-carto/app
+  extra_hosts:
+    - "mymachine:$MYMACHINE"
+
